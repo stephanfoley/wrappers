@@ -6,7 +6,7 @@ class MistralChat:
     def __init__(self, api_key=None, model="mistral-medium"):
         self.api_key = api_key or os.getenv("MISTRAL_API_KEY")
         if not self.api_key:
-            raise ValueError("Please set MISTRAL_API_KEY in your environment variables or pass it to the constructor.")
+            raise ValueError("MISTRAL_API_KEY not set.")
         self.model = model
         self.history = []
 
