@@ -1,5 +1,6 @@
 import anthropic
 
+client = anthropic.Anthropic()
 messages = []
 system = '''
    Keep replies under 400 words unless otherwise needed
@@ -10,11 +11,10 @@ system = '''
 '''
 
 def c(msg):
+    global client
     global messages
     global system
 
-    client = anthropic.Anthropic()
-    
     messages.append({"role": "user", "content": msg})
     
     kwargs = {
@@ -25,10 +25,7 @@ def c(msg):
     }
 
     message = client.messages.create(**kwargs)
-
     response = message.content[0].text
-
     messages.append({"role": "assistant", "content": response})
     
     print(response)
-
