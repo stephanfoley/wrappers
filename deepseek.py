@@ -70,8 +70,6 @@ system = '''
 
 client = OpenAI(api_key=os.environ.get('DEEPSEEK_API_KEY'), base_url="https://api.deepseek.com")
 
-system_prompt = "please keep replies under 400 words"
-
 def d(msg):
     response = client.chat.completions.create(
         model="deepseek-reasoner",
